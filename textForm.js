@@ -10,7 +10,7 @@ class TextForm extends React.Component {
   }
 
   render() {
-    const entry = { name: 'Vivian', color: 'Blue' };
+    const entry = [{ name: 'Vivian', color: 'Blue' }, { name: 'Jenny', color: 'black' }];
 
     return(
       <View style={styles.container}>

@@ -3,17 +3,20 @@ import { View, StyleSheet, Text } from 'react-native';
 
 class TextList extends React.Component {
   render() {
-    let textInput;
+    let textInput = [];
     if (this.props.entries) {
-      textInput = this.props.entries.map(entry => {
-      <Text style={styles.entries}></Text>;
+      this.props.entries.forEach(entry => {
+      textInput.push(
+        <Text style={styles.entries}>{entry.name}</Text>
+      );
+      textInput.push(
+        <Text style={styles.entries}>{entry.color}</Text>
+      );
       });
     }
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.entries}>Hello!</Text>
-      </View >
+      {textInput}
     );
   }
 }
@@ -22,10 +25,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: 0
   },
   entries: {
-    fontFamily: 'arial',
+    fontFamily: 'Arial',
     fontSize: 16
   }
 });
