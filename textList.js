@@ -1,22 +1,20 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import TextItem from './textItem';
 
 class TextList extends React.Component {
   render() {
-    let textInput = [];
+    let textInput;
     if (this.props.entries) {
-      this.props.entries.forEach(entry => {
-      textInput.push(
-        <Text style={styles.entries}>{entry.name}</Text>
-      );
-      textInput.push(
-        <Text style={styles.entries}>{entry.color}</Text>
-      );
+      textInput = this.props.entries.map((entry, idx) => {
+        return (<TextItem key={idx} entry={entry}/>);
       });
     }
 
     return (
-      {textInput}
+      <View style={styles.container}>
+        {textInput}
+      </View>
     );
   }
 }
