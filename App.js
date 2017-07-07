@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
 import TextForm from './components/textForm';
 import AlertExample from './components/alert';
+import GiphySearchForm from './components/giphySearchForm';
 
 export default class App extends React.Component {
   render() {
@@ -10,14 +11,15 @@ export default class App extends React.Component {
         <ScrollView>
           <TextForm style={styles.textForm}/>
           <AlertExample />
-          <Text>Open up App.js to start working on your app!</Text>
-          <Text>Changes you make will automatically reload.</Text>
-          <Text>Shake your phone to open the developer menu.</Text>          
+          <GiphySearchForm />
         </ScrollView>
       </View>
     );
   }
 }
+// <Text>Open up App.js to start working on your app!</Text>
+// <Text>Changes you make will automatically reload.</Text>
+// <Text>Shake your phone to open the developer menu.</Text>
 
 const styles = StyleSheet.create({
   container: {
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textForm: {
-    flex: 1,
-    margin: 50
+    // flex: 1
+    // margin: 50
   }
 });
