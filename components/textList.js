@@ -13,6 +13,7 @@ class TextList extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.header}>Text List</Text>
         {textInput}
       </View>
     );
@@ -28,6 +29,11 @@ const styles = StyleSheet.create({
   entries: {
     fontFamily: 'Arial',
     fontSize: 16
+  },
+  header: {
+    fontFamily: 'Arial',
+    fontSize: 28,
+    fontWeight: 'bold'
   }
 });
 

@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
   entry: {
     fontFamily: 'Arial',
     fontSize: 18,
+  },
+  header: {
+    fontFamily: 'Arial',
+    fontSize: 28,
+    fontWeight: 'bold'
   }
 });
 
