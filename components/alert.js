@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Alert, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 class AlertExample extends React.Component {
 
@@ -12,15 +12,21 @@ class AlertExample extends React.Component {
    };
 
    return (
-      <TouchableOpacity onPress = {showAlert} style = {styles.button}>
-         <Text style={styles.text}>Alert</Text>
-      </TouchableOpacity>
+     <View style={styles.container}>
+       <TouchableOpacity onPress = {showAlert} style = {styles.button}>
+       <Text style={styles.text}>Alert</Text>
+       </TouchableOpacity>
+     </View>
    );
   }
 }
 
 const styles = StyleSheet.create ({
-   button: {
+  container: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  button: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4ba37b',

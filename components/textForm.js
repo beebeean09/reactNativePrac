@@ -9,7 +9,12 @@ class TextForm extends React.Component {
   }
 
   render() {
-    const entry = [{ name: 'Vivian', color: 'Blue' }, { name: 'Jenny', color: 'black' }];
+    const entry = [
+      { name: 'Vivian', color: 'Blue' },
+      { name: 'Jenny', color: 'black' },
+      { name: 'Lisa', color: 'orange' },
+      { name: 'Rose', color: 'pink' }
+      ];
 
     return(
       <View style={styles.container}>
