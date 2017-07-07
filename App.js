@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import TextForm from './textForm';
+import TextForm from './components/textForm';
 
 export default class App extends React.Component {
   render() {

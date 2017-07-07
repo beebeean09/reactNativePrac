@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, NavigatorIOS } from 'react-native';
-import App from './App';
+import App from '../App';
 
 class Navbar extends React.Component {
   render() {
