@@ -6,7 +6,6 @@ class TextForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = { name: 'Vivian', color: 'Blue' };
   }
 
   render() {
@@ -22,9 +21,10 @@ class TextForm extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 200
   }
 });
 

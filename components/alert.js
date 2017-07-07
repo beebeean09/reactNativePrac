@@ -13,7 +13,7 @@ class AlertExample extends React.Component {
 
    return (
       <TouchableOpacity onPress = {showAlert} style = {styles.button}>
-         <Text>Alert</Text>
+         <Text style={styles.text}>Alert</Text>
       </TouchableOpacity>
    );
   }
@@ -21,14 +21,19 @@ class AlertExample extends React.Component {
 
 const styles = StyleSheet.create ({
    button: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4ba37b',
     width: 100,
-    borderRadius: 50,
-    marginTop: 100
-   }
+    height: 100,
+    borderRadius: 20,
+    marginTop: 50,
+    marginBottom: 50
+  },
+  text: {
+    color: 'white',
+    fontSize: 25
+  }
 });
 
 export default AlertExample;

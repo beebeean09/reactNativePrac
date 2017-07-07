@@ -5,7 +5,6 @@ class TextItem extends React.Component {
   render() {
     const entry = this.props.entry;
 
-    // <Text style={styles.entry}>TextItem</Text>
     return(
       <View style={styles.container}>
         <Text style={styles.entry}>Name: {entry.name}</Text>
@@ -17,13 +16,14 @@ class TextItem extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 100
   },
   entry: {
     fontFamily: 'Arial',
-    fontSize: 18
+    fontSize: 18,
   }
 });
 

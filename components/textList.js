@@ -21,10 +21,9 @@ class TextList extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    margin: 0
+    alignItems: 'center'
   },
   entries: {
     fontFamily: 'Arial',
