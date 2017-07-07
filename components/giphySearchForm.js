@@ -6,17 +6,19 @@ class GiphySearchForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { searchTerm: "" };
+    this.state = { searchTerm: "", giphys: undefined};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   fetchGiphy(searchTerm) {
-    $.ajax({
-      method: 'GET',
-      url: `http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`
-    }).then(giphy => {
-       console.log(giphy);
-    });
+    return ($.ajax({
+        method: 'GET',
+        url: `http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`
+        }).then(giphy => {
+        console.log('Hello from fetchgiphy');
+        //  this.setState({giphys: giphy});
+      })
+    );
   }
 
   handleSubmit(e) {
@@ -32,8 +34,11 @@ class GiphySearchForm extends React.Component {
   }
 
   render() {
+    const giphyImage = this.state.giphy ? this.state.giphy : 'None';
+
     return (
       <View>
+        <Text style={{color: 'black'}}>{giphyImage}</Text>
         <TextInput
           style={styles.input}
           placeholder = "Search Term"

@@ -5,13 +5,17 @@ import AlertExample from './components/alert';
 import GiphySearchForm from './components/giphySearchForm';
 
 export default class App extends React.Component {
+  // componentDidMount() {
+  //   console.log('hello');
+  // }
+
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
           <TextForm style={styles.textForm}/>
-          <AlertExample />
           <GiphySearchForm />
+          <AlertExample />
         </ScrollView>
       </View>
     );
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   textForm: {
     // flex: 1
