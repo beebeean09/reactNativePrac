@@ -6,36 +6,8 @@ class GiphySearchForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = { searchTerm: "", giphys: ""};
     this.state = { first: "", last: "", email: ""};
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.alertInput = this.alertInput.bind(this);
-  }
-
-  fetchGiphy(searchTerm) {
-    //  $.ajax({
-    //     method: 'GET',
-    //     url: `http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=5`
-    //     }).then(response => {
-    //     if (response.status !== 200){
-    //       console.log('fetchLystList. Status code: ' + response.status);
-    //       return;
-    //     }
-    //     response.json().then(data => {
-    //       this.setState({giphys: data});
-    //     });
-    //     //  this.setState({giphys: giphy});
-    //   });
-    var xhr = $.get(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=5`);
-    xhr.done(data => this.setState({giphys: data}));
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    const searchTerm = this.state.searchTerm;
-    this.fetchGiphy(searchTerm);
-    this.setState({ searchTerm: ""});
   }
 
   alertInput(first, last, email) {
@@ -43,9 +15,7 @@ class GiphySearchForm extends React.Component {
   }
 
   render() {
-    const giphyImage = this.state.giphy !== "" ? 'None' : this.state.giphy;
 
-    // <Text style={{color: 'black'}}>Text:{giphyImage}</Text>
     return (
       <View>
         <TextInput
