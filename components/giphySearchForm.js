@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import $ from '@rtorr/ajax-only';
 
 class GiphySearchForm extends React.Component {
@@ -31,9 +31,17 @@ class GiphySearchForm extends React.Component {
     .then(res => this.updateList(res));
   }
 
+  giphyParse(list) {
+    let giphyImage;
+    giphyImage = list.map(giphy => (
+      giphy.images.original.url
+    ));
+    return giphyImage;
+  }
+
   updateList(list) {
-    this.setState({giphy: list});
-    alert('update: ' + this.state.giphy.data);
+    this.setState({giphy: this.giphyParse(list.data)});
+    alert('update: ' + this.state.giphy);
   }
 
   handleSubmit(e) {
@@ -49,7 +57,16 @@ class GiphySearchForm extends React.Component {
   }
 
   render() {
-    const giphyImage = this.state.giphy !== "" ? 'None' : this.state.giphy;
+    let giphyImage;
+
+    // <Text style={{color: 'black'}}>{el} {idx}</Text>
+    if (this.state.giphy) {
+      giphyImage = this.state.giphy.map((idx, el) => (
+        <Image key={el} source={{uri: idx}} style={{ width: 200, height: 200 }} />
+      ));
+    } else {
+      giphyImage = <Text>Giphy: {this.state.giphy}</Text>;
+    }
 
     // <Text style={{color: 'black'}}>Text:{giphyImage}</Text>
     return (
@@ -83,6 +100,7 @@ class GiphySearchForm extends React.Component {
           onPress = {() => this.fetchGiphy(this.state.searchTerm)}>
           <Text style={{color: 'white', fontSize: 15}}>Submit Term</Text>
         </TouchableOpacity>
+        {giphyImage}
       </View>
     );
   }
