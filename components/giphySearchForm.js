@@ -6,19 +6,25 @@ class GiphySearchForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { searchTerm: "", giphys: undefined};
+    this.state = { searchTerm: "", giphys: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   fetchGiphy(searchTerm) {
-    return ($.ajax({
+     $.ajax({
         method: 'GET',
         url: `http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`
-        }).then(giphy => {
-        console.log('Hello from fetchgiphy');
+        }).then(response => {
+        if (response.status !== 200){
+          console.log('fetchLystList. Status code: ' + response.status);
+          return;
+        }
+        response.json().then(data => {
+          this.setState({giphys: data});
+        });
         //  this.setState({giphys: giphy});
-      })
-    );
+      });
+
   }
 
   handleSubmit(e) {
@@ -33,12 +39,16 @@ class GiphySearchForm extends React.Component {
     return e => this.setState({[field]: e.target.value});
   }
 
+  alertInput(searchTerm, giphys) {
+    alert('search term: ' + searchTerm + ' giphys: ' + giphys);
+  }
+
   render() {
-    const giphyImage = this.state.giphy ? this.state.giphy : 'None';
+    const giphyImage = this.state.giphy !== "" ? 'None' : this.state.giphy;
 
     return (
       <View>
-        <Text style={{color: 'black'}}>{giphyImage}</Text>
+        <Text style={{color: 'black'}}>Text:{giphyImage}</Text>
         <TextInput
           style={styles.input}
           placeholder = "Search Term"
@@ -47,7 +57,7 @@ class GiphySearchForm extends React.Component {
           onChangetext = {this.update('searchTerm')}/>
         <TouchableOpacity
           style={styles.submitbutton}
-          onPress = {() => this.handleSubmit}>
+          onPress = {() => this.alertInput(this.state.searchTerm, this.state.giphys)}>
           <Text style={{color: '#4ba37b'}}>Submit Term</Text>
         </TouchableOpacity>
       </View>
