@@ -6,26 +6,12 @@ class GiphySearchForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = { searchTerm: "", giphys: ""};
     this.state = { first: "", last: "", email: "", searchTerm: "", giphy: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.alertInput = this.alertInput.bind(this);
   }
 
   fetchGiphy(searchTerm) {
-    //  $.ajax({
-    //     method: 'GET',
-    //     url: `http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=5`
-    //     }).then(response => {
-    //     if (response.status !== 200){
-    //       console.log('fetchLystList. Status code: ' + response.status);
-    //       return;
-    //     }
-    //     response.json().then(data => {
-    //       this.setState({giphys: data});
-    //     });
-    //     //  this.setState({giphys: giphy});
-    //   });
     fetch(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=5`)
     .then(res => res.json())
     .then(res => this.updateList(res));
@@ -59,16 +45,12 @@ class GiphySearchForm extends React.Component {
   render() {
     let giphyImage;
 
-    // <Text style={{color: 'black'}}>{el} {idx}</Text>
     if (this.state.giphy) {
       giphyImage = this.state.giphy.map((idx, el) => (
         <Image key={el} source={{uri: idx}} style={{ width: 200, height: 200 }} />
       ));
-    } else {
-      giphyImage = <Text>Giphy: {this.state.giphy}</Text>;
     }
 
-    // <Text style={{color: 'black'}}>Text:{giphyImage}</Text>
     return (
       <View>
         <TextInput
@@ -105,7 +87,6 @@ class GiphySearchForm extends React.Component {
     );
   }
 }
-// onPress = {() => this.alertInput(this.state.first, this.state.last, this.state.email)}>
 
 const styles = StyleSheet.create({
   container: {
