@@ -7,7 +7,7 @@ class GiphySearchForm extends React.Component {
     super(props);
 
     // this.state = { searchTerm: "", giphys: ""};
-    this.state = { firstN: "", lastN: "", email: ""};
+    this.state = { first: "", last: "", email: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.alertInput = this.alertInput.bind(this);
   }
@@ -28,7 +28,6 @@ class GiphySearchForm extends React.Component {
     //   });
     var xhr = $.get(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=5`);
     xhr.done(data => this.setState({giphys: data}));
-    this.alertInput(searchTerm, this.state.giphys);
   }
 
   handleSubmit(e) {
@@ -39,12 +38,8 @@ class GiphySearchForm extends React.Component {
     this.setState({ searchTerm: ""});
   }
 
-  update(field) {
-    return e => this.setState({[field]: e.target.value});
-  }
-
-  alertInput(firstN, lastN, email) {
-    alert('firstN: ' + firstN + ' lastN: ' + lastN + ' email: ' + email);
+  alertInput(first, last, email) {
+    alert('first: ' + first + ' last: ' + last + ' email: ' + email);
   }
 
   render() {
@@ -58,22 +53,22 @@ class GiphySearchForm extends React.Component {
           placeholder = "First Name"
           placeholderTextColor = "#4ba37b"
           autoCapitalize = "none"
-          onChangetext = {this.update('firstN')}/>
+          onChangeText = {(first) => this.setState({first: first})}/>
         <TextInput
           style={styles.input}
           placeholder = "Last Name"
           placeholderTextColor = "#4ba37b"
           autoCapitalize = "none"
-          onChangetext = {this.update('lastN')}/>
+          onChangeText = {(last) => this.setState({last: last})}/>
         <TextInput
           style={styles.input}
           placeholder = "Email"
           placeholderTextColor = "#4ba37b"
           autoCapitalize = "none"
-          onChangetext = {this.update('email')}/>
+          onChangeText = {(email) => this.setState({email: email})}/>
         <TouchableOpacity
           style={styles.submitButton}
-          onPress = {() => this.handleSubmit}>
+          onPress = {() => this.alertInput(this.state.first, this.state.last, this.state.email)}>
           <Text style={{color: 'white', fontSize: 15}}>Submit Term</Text>
         </TouchableOpacity>
       </View>
