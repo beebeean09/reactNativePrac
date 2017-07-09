@@ -27,7 +27,6 @@ class GiphySearchForm extends React.Component {
 
   updateList(list) {
     this.setState({giphy: this.giphyParse(list.data)});
-    alert('update: ' + this.state.giphy);
   }
 
   handleSubmit(e) {
@@ -52,7 +51,8 @@ class GiphySearchForm extends React.Component {
     }
 
     return (
-      <View>
+      <View style={styles.container}>
+        <Text style={styles.header}>Text Input</Text>
         <TextInput
           style={styles.input}
           placeholder = "First Name"
@@ -108,6 +108,11 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 20,
     height: 40,
+  },
+  header: {
+    fontFamily: 'Arial',
+    fontSize: 28,
+    fontWeight: 'bold'
   }
 });
 
