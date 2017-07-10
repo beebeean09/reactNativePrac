@@ -41,7 +41,7 @@ class GiphySearchForm extends React.Component {
 
     if (this.state.giphy) {
       giphyImage = this.state.giphy.map((idx, el) => (
-        <Image key={el} source={{uri: idx}} style={{ width: 200, height: 200 }} />
+        <Image key={el} source={{uri: idx}} style={styles.giphys} />
       ));
     }
 
@@ -57,7 +57,7 @@ class GiphySearchForm extends React.Component {
         <TouchableOpacity
           style={styles.submitButton}
           onPress = {() => this.fetchGiphy(this.state.searchTerm)}>
-          <Text style={{color: 'white', fontSize: 15}}>Submit Term</Text>
+          <Text style={styles.text}>Submit Term</Text>
         </TouchableOpacity>
         {giphyImage}
       </View>
@@ -91,6 +91,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Arial',
     fontSize: 28,
     fontWeight: 'bold'
+  },
+  text: {
+    color: 'white',
+    fontSize: 16
+  },
+  giphys: {
+    width: 200,
+    height: 200,
+    margin: 10
   }
 });
 

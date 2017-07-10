@@ -13,6 +13,15 @@ class AlertExample extends React.Component {
     alert('First Name: ' + first + ' Last Name: ' + last + ' Email: ' + email + '.');
   }
 
+  update(field) {
+    return val => this.setState({[field]: val});
+  }
+
+  clearForm(fieldName) {
+    alert(this.refs);
+    this.refs[fieldName].setNativeProps({fieldName: ''});
+  }
+
   render() {
 
    return (
@@ -20,25 +29,34 @@ class AlertExample extends React.Component {
        <Text style={styles.header}>Info Alert</Text>
        <TextInput
          style={styles.input}
-         placeholder = "First Name"
+         ref={'first'}
+        //  placeholder = "First Name"
          placeholderTextColor = "#4ba37b"
          autoCapitalize = "none"
-         onChangeText = {(first) => this.setState({first: first})}/>
+        //  onChangeText = {(first) => this.setState({first: first})}/>
+         onChangeText = {this.update('first')}/>
        <TextInput
+         ref={'last'}
          style={styles.input}
-         placeholder = "Last Name"
+        //  placeholder = "Last Name"
          placeholderTextColor = "#4ba37b"
          autoCapitalize = "none"
          onChangeText = {(last) => this.setState({last: last})}/>
        <TextInput
+        ref={'email'}
          style={styles.input}
-         placeholder = "Email"
+        //  placeholder = "Email"
          placeholderTextColor = "#4ba37b"
          autoCapitalize = "none"
          onChangeText = {(email) => this.setState({email: email})}/>
-       <TouchableOpacity onPress = {() => this.handleAlert(this.state.first, this.state.last, this.state.email)} style = {styles.button}>
-        <Text style={styles.text}>Alert With Info</Text>
-       </TouchableOpacity>
+       <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress = {() => this.handleAlert(this.state.first, this.state.last, this.state.email)} style = {styles.button}>
+          <Text style={styles.text}>Alert With Info</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress = {() => this.clearForm('first')} style = {styles.button}>
+          <Text style={styles.text}>Clear Form</Text>
+        </TouchableOpacity>
+       </View>
      </View>
    );
   }
@@ -50,16 +68,18 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    width: 300,
+  },
   button: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4ba37b',
-    width: 'auto',
-    height: 60,
-    borderRadius: 20,
-    marginTop: 10,
-    marginBottom: 20,
+    height: 40,
+    borderRadius: 4,
+    margin: 10,
     padding: 10
   },
   input: {
@@ -72,7 +92,7 @@ const styles = StyleSheet.create ({
   },
   text: {
     color: 'white',
-    fontSize: 18
+    fontSize: 16
   },
   header: {
     fontFamily: 'Arial',
