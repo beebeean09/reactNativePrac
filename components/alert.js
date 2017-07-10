@@ -10,35 +10,35 @@ class AlertExample extends React.Component {
   }
 
   handleAlert(first, last, email) {
-    alert('First Name: ' + first + 'Last Name: ' + last + 'Email: ' + email + '.');
+    alert('First Name: ' + first + ' Last Name: ' + last + ' Email: ' + email + '.');
   }
-
 
   render() {
 
    return (
      <View style={styles.container}>
-     <TextInput
-       style={styles.input}
-       placeholder = "First Name"
-       placeholderTextColor = "#4ba37b"
-       autoCapitalize = "none"
-       onChangeText = {(first) => this.setState({first: first})}/>
-     <TextInput
-       style={styles.input}
-       placeholder = "Last Name"
-       placeholderTextColor = "#4ba37b"
-       autoCapitalize = "none"
-       onChangeText = {(last) => this.setState({last: last})}/>
-     <TextInput
-       style={styles.input}
-       placeholder = "Email"
-       placeholderTextColor = "#4ba37b"
-       autoCapitalize = "none"
-       onChangeText = {(email) => this.setState({email: email})}/>
-     <TouchableOpacity onPress = {() => this.handleAlert} style = {styles.button}>
-      <Text style={styles.text}>Alert With Info</Text>
-     </TouchableOpacity>
+       <Text style={styles.header}>Info Alert</Text>
+       <TextInput
+         style={styles.input}
+         placeholder = "First Name"
+         placeholderTextColor = "#4ba37b"
+         autoCapitalize = "none"
+         onChangeText = {(first) => this.setState({first: first})}/>
+       <TextInput
+         style={styles.input}
+         placeholder = "Last Name"
+         placeholderTextColor = "#4ba37b"
+         autoCapitalize = "none"
+         onChangeText = {(last) => this.setState({last: last})}/>
+       <TextInput
+         style={styles.input}
+         placeholder = "Email"
+         placeholderTextColor = "#4ba37b"
+         autoCapitalize = "none"
+         onChangeText = {(email) => this.setState({email: email})}/>
+       <TouchableOpacity onPress = {() => this.handleAlert(this.state.first, this.state.last, this.state.email)} style = {styles.button}>
+        <Text style={styles.text}>Alert With Info</Text>
+       </TouchableOpacity>
      </View>
    );
   }
@@ -58,8 +58,8 @@ const styles = StyleSheet.create ({
     width: 'auto',
     height: 60,
     borderRadius: 20,
-    marginTop: 30,
-    marginBottom: 30,
+    marginTop: 10,
+    marginBottom: 20,
     padding: 10
   },
   input: {

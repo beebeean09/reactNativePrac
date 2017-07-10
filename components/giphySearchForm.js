@@ -68,7 +68,9 @@ class GiphySearchForm extends React.Component {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 50,
+    marginTop: 25
   },
   input: {
     margin: 20,
@@ -83,8 +85,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderRadius: 4,
     padding: 10,
-    margin: 20,
-    height: 40,
+    height: 40
   },
   header: {
     fontFamily: 'Arial',
