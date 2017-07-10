@@ -1,21 +1,44 @@
 import React from 'react';
-import { Alert, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import { Alert, Text, TouchableOpacity, StyleSheet, View, TextInput } from 'react-native';
 
 class AlertExample extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { first: "", last: "", email: ""};
+    this.handleAlert = this.handleAlert.bind(this);
+  }
+
+  handleAlert(first, last, email) {
+    alert('First Name: ' + first + 'Last Name: ' + last + 'Email: ' + email + '.');
+  }
+
 
   render() {
 
-   const showAlert = () => {
-      Alert.alert(
-         'ALERT ALERT! HELLO.. HEHE'
-      );
-   };
-
    return (
      <View style={styles.container}>
-       <TouchableOpacity onPress = {showAlert} style = {styles.button}>
-       <Text style={styles.text}>Alert</Text>
-       </TouchableOpacity>
+     <TextInput
+       style={styles.input}
+       placeholder = "First Name"
+       placeholderTextColor = "#4ba37b"
+       autoCapitalize = "none"
+       onChangeText = {(first) => this.setState({first: first})}/>
+     <TextInput
+       style={styles.input}
+       placeholder = "Last Name"
+       placeholderTextColor = "#4ba37b"
+       autoCapitalize = "none"
+       onChangeText = {(last) => this.setState({last: last})}/>
+     <TextInput
+       style={styles.input}
+       placeholder = "Email"
+       placeholderTextColor = "#4ba37b"
+       autoCapitalize = "none"
+       onChangeText = {(email) => this.setState({email: email})}/>
+     <TouchableOpacity onPress = {() => this.handleAlert} style = {styles.button}>
+      <Text style={styles.text}>Alert With Info</Text>
+     </TouchableOpacity>
      </View>
    );
   }
@@ -32,15 +55,29 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4ba37b',
-    width: 100,
-    height: 100,
+    width: 'auto',
+    height: 60,
     borderRadius: 20,
-    marginTop: 50,
-    marginBottom: 50
+    marginTop: 30,
+    marginBottom: 30,
+    padding: 10
+  },
+  input: {
+    margin: 20,
+    height: 40,
+    padding: 10,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 4
   },
   text: {
     color: 'white',
-    fontSize: 25
+    fontSize: 18
+  },
+  header: {
+    fontFamily: 'Arial',
+    fontSize: 28,
+    fontWeight: 'bold'
   }
 });
 

@@ -6,9 +6,8 @@ class GiphySearchForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { first: "", last: "", email: "", searchTerm: "", giphy: ""};
+    this.state = {searchTerm: "", giphy: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.alertInput = this.alertInput.bind(this);
   }
 
   fetchGiphy(searchTerm) {
@@ -37,10 +36,6 @@ class GiphySearchForm extends React.Component {
     this.setState({ searchTerm: ""});
   }
 
-  alertInput(first, last, email) {
-    alert('first: ' + first + ' last: ' + last + ' email: ' + email);
-  }
-
   render() {
     let giphyImage;
 
@@ -52,28 +47,10 @@ class GiphySearchForm extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Text Input</Text>
+        <Text style={styles.header}>Giphy Search</Text>
         <TextInput
           style={styles.input}
-          placeholder = "First Name"
-          placeholderTextColor = "#4ba37b"
-          autoCapitalize = "none"
-          onChangeText = {(first) => this.setState({first: first})}/>
-        <TextInput
-          style={styles.input}
-          placeholder = "Last Name"
-          placeholderTextColor = "#4ba37b"
-          autoCapitalize = "none"
-          onChangeText = {(last) => this.setState({last: last})}/>
-        <TextInput
-          style={styles.input}
-          placeholder = "Email"
-          placeholderTextColor = "#4ba37b"
-          autoCapitalize = "none"
-          onChangeText = {(email) => this.setState({email: email})}/>
-        <TextInput
-          style={styles.input}
-          placeholder = "SearchTerm"
+          placeholder = "Enter Search Term Here"
           placeholderTextColor = "#4ba37b"
           autoCapitalize = "none"
           onChangeText = {(searchTerm) => this.setState({searchTerm: searchTerm})}/>
