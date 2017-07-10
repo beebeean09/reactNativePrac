@@ -7,6 +7,7 @@ class AlertExample extends React.Component {
 
     this.state = { first: "", last: "", email: ""};
     this.handleAlert = this.handleAlert.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   handleAlert(first, last, email) {
@@ -17,9 +18,8 @@ class AlertExample extends React.Component {
     return val => this.setState({[field]: val});
   }
 
-  clearForm(fieldName) {
-    alert(this.refs);
-    this.refs[fieldName].setNativeProps({fieldName: ''});
+  clearForm() {
+    this.setState({first: '', last: '', email: ''});
   }
 
   render() {
@@ -29,31 +29,30 @@ class AlertExample extends React.Component {
        <Text style={styles.header}>Info Alert</Text>
        <TextInput
          style={styles.input}
-         ref={'first'}
-        //  placeholder = "First Name"
+         value={this.state.first}
+         placeholder = "First Name"
          placeholderTextColor = "#4ba37b"
          autoCapitalize = "none"
-        //  onChangeText = {(first) => this.setState({first: first})}/>
          onChangeText = {this.update('first')}/>
        <TextInput
-         ref={'last'}
          style={styles.input}
-        //  placeholder = "Last Name"
+         value={this.state.last}
+         placeholder = "Last Name"
          placeholderTextColor = "#4ba37b"
          autoCapitalize = "none"
-         onChangeText = {(last) => this.setState({last: last})}/>
+         onChangeText = {this.update('last')}/>
        <TextInput
-        ref={'email'}
          style={styles.input}
-        //  placeholder = "Email"
+         value={this.state.email}
+         placeholder = "Email"
          placeholderTextColor = "#4ba37b"
          autoCapitalize = "none"
-         onChangeText = {(email) => this.setState({email: email})}/>
+         onChangeText = {this.update('email')}/>
        <View style={styles.buttonContainer}>
         <TouchableOpacity onPress = {() => this.handleAlert(this.state.first, this.state.last, this.state.email)} style = {styles.button}>
           <Text style={styles.text}>Alert With Info</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress = {() => this.clearForm('first')} style = {styles.button}>
+        <TouchableOpacity onPress = {() => this.clearForm()} style = {styles.button}>
           <Text style={styles.text}>Clear Form</Text>
         </TouchableOpacity>
        </View>
