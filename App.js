@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
 import TextForm from './components/textForm';
 import AlertExample from './components/alert';
 import GiphySearchForm from './components/giphySearchForm';
+import SliderArea from './components/sliderArea';
 
 export default class App extends React.Component {
   // componentDidMount() {
@@ -16,6 +17,7 @@ export default class App extends React.Component {
           <TextForm style={styles.textForm}/>
           <GiphySearchForm />
           <AlertExample />
+          <SliderArea />
         </ScrollView>
       </View>
     );
