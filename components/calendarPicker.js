@@ -7,25 +7,31 @@ class Calendar extends React.Component {
     super(props);
 
     this.state = { date: null};
+    this.onDateChange = this.onDateChange.bind(this);
   }
 
-  onDateChange() {
-
+  onDateChange(date) {
+    this.setState({ date: date });
   }
 
   render() {
-    return(
-      <View>
-        <CalendarPicker />
-      </View>
+    const { selectedStartDate } = this.state;
+    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
 
-    )
+    return(
+      <View style={styles.container}>
+        <CalendarPicker
+          onDateChange={this.onDateChange}/>
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center'
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'pink'
   }
 });
 

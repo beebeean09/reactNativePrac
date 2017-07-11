@@ -4,6 +4,7 @@ import TextForm from './components/textForm';
 import AlertExample from './components/alert';
 import GiphySearchForm from './components/giphySearchForm';
 import SliderArea from './components/sliderArea';
+import Calendar from './components/calendarPicker';
 
 export default class App extends React.Component {
   // componentDidMount() {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
           <GiphySearchForm />
           <AlertExample />
           <SliderArea />
+          <Calendar />
         </ScrollView>
       </View>
     );
