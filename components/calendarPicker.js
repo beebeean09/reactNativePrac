@@ -15,13 +15,16 @@ class Calendar extends React.Component {
   }
 
   render() {
-    const { selectedStartDate } = this.state;
-    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    const { date } = this.state;
+    const startDate = date ? date.toString() : '';
 
     return(
       <View style={styles.container}>
         <CalendarPicker
           onDateChange={this.onDateChange}/>
+        <View>
+          <Text style={styles.text}>SELECTED DATE: { date }</Text>
+        </View>
       </View>
     );
   }
@@ -32,6 +35,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'pink'
+  },
+  text: {
+    fontSize: 14,
+    color: 'black',
+    textAlign: 'center'
   }
 });
 
